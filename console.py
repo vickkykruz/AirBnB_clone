@@ -4,6 +4,7 @@
     This module contain the implementation of the console
 """
 import cmd
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -18,7 +19,6 @@ class HBNBCommand(cmd.Cmd):
     def do_exit(self, line):
         """ quits the command line interface """
         return True
-    
 
 
 if __name__ == '__main__':
