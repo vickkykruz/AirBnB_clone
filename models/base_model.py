@@ -5,6 +5,7 @@
 """
 from uuid import uuid4
 from datetime import datetime
+from models import storage
 
 
 class BaseModel():
@@ -29,6 +30,7 @@ class BaseModel():
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
         """ This method defines a custom string method """
@@ -37,6 +39,7 @@ class BaseModel():
     def save(self):
         """ This method updates the "updates_at" with the current datetime """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """ returns a dictionary containing
