@@ -48,12 +48,14 @@ class HBNBCommand(cmd.Cmd):
             return
 
         stored_objects = FileStorage.all(self.__dict__)
+        class_name = args[0]
 
         for obj_id in stored_objects.keys():
             class_name, unique_id = obj_id.split('.')
             id_list.append(unique_id)
         if args[1] in id_list:
-            obj = stored_objects[obj_id]
+            key = f"{class_name}.{args[1]}"
+            obj = stored_objects[key]
             print(obj)
         else:
             print("** no instance found **")
@@ -97,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
             if args[0] not in HBNBCommand.class_list:
                 print("** class doesn't exist **")
                 return
-        except:
+        except Exception as e:
             pass
 
         for keys in stored_objects.keys():
@@ -109,6 +111,47 @@ class HBNBCommand(cmd.Cmd):
                 instanceList.append(mySearch)
 
         print(instanceList)
+
+    def do_update(self, line):
+        """ Updates an instance based on the class name and id
+            by adding or updating attribute
+        """
+        args = line.split()
+
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        elif args[0] not in HBNBCommand.class_list:
+            print("** class doesn't exist **")
+            return
+        elif len(args) == 1:
+            print("** instance id missing ** ")
+            return
+        elif len(args) == 2:
+            print("** attribute name missing **")
+        elif len(args) == 3:
+            print("** value missing **")
+
+        stored_objects = FileStorage.all(self)
+
+        class_name = args[0]
+        instance_id = args[1]
+        att_name = args[2]
+        value = args[3].replace("'", '').replace('"', '')
+
+        key = f"{class_name}.{instance_id}"
+
+        if key in stored_objects:
+            instance_to_update = stored_objects[key]
+
+        if len(args) >= 3:
+            # try:
+            #     setattr(key, att_name, value)
+            #     FileStorage.save(self)
+            # except Exception as e:
+            #     print("** no instance found **\n", e)
+            setattr(instance_to_update, att_name, value)
+            FileStorage.save(self)
 
     def do_EOF(self, line):
         """ End-of-File Marker """
