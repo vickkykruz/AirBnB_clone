@@ -7,6 +7,7 @@ import json
 import os
 from models.base_model import BaseModel
 
+
 class FileStorage:
     """ This class serializes instances to a JSON file and
         deserializes JSON file to instances
@@ -43,6 +44,7 @@ class FileStorage:
             with open(filename, mode="r", encoding="utf8") as f:
                 objdict = json.load(f)
                 for key, value in objdict.items():
-                    FileStorage.__objects[key] = eval(value["__class__"])(**value)
+                    FileStorage.__objects[key] = \
+                        eval(value["__class__"])(**value)
         else:
             pass

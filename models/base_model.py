@@ -45,9 +45,14 @@ class BaseModel():
         """ returns a dictionary containing
             all keys/values of __dict__ of the instance
         """
-        self.created_at = self.created_at.isoformat()
-        self.updated_at = self.updated_at.isoformat()
-        result_dict = {}
+        result_dict = self.__dict__.copy()
         result_dict['__class__'] = self.__class__.__name__
-        result_dict.update(self.__dict__)
+
+        if 'created_at' in result_dict \
+                and isinstance(result_dict['created_at'], datetime):
+            result_dict['created_at'] = result_dict['created_at'].isoformat()
+        if 'updated_at' in result_dict \
+                and isinstance(result_dict['updated_at'], datetime):
+            result_dict['updated_at'] = result_dict['updated_at'].isoformat()
+
         return result_dict
