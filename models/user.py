@@ -4,7 +4,6 @@
     This module contains one class
 """
 from models.base_model import BaseModel
-import models
 
 
 class User(BaseModel):

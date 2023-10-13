@@ -4,9 +4,15 @@
     This module contain the implementation of the console
 """
 import cmd
+
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models.state import State
 from models.user import User
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -14,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    class_list = ["BaseModel", "User"]
+    class_list = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
 
     def do_create(self, line):
         """ Creates a new instance of BaseModel """
@@ -30,6 +36,16 @@ class HBNBCommand(cmd.Cmd):
             new_instance = BaseModel()
         if line == 'User':
             new_instance = User()
+        if line == 'State':
+            new_instance = State()
+        if line == 'City':
+            new_instance = City()
+        if line == 'Amenity':
+            new_instance = Amenity()
+        if line == 'Place':
+            new_instance = Place()
+        if line == 'Review':
+            new_instance = Review()
         new_instance.save()
         print(new_instance.id)
 
