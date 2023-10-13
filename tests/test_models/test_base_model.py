@@ -24,3 +24,5 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(type(instClass.updated_at) is datetime)
         self.assertTrue(type(instClass.created_at) is datetime)
         self.assetTrue(instClass,created_at == instClass.updated_at)
+
+
