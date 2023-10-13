@@ -5,6 +5,7 @@
 """
 from uuid import uuid4
 from datetime import datetime
+
 import models
 
 
@@ -34,7 +35,8 @@ class BaseModel():
 
     def __str__(self):
         """ This method defines a custom string method """
-        return f"[BaseModel] ({self.id}) {self.__dict__}"
+        clsName = self.__class__.__name__
+        return f"[{clsName}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """ This method updates the "updates_at" with the current datetime """
