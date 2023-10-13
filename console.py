@@ -6,6 +6,7 @@
 import cmd
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -13,7 +14,7 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    class_list = ["BaseModel"]
+    class_list = ["BaseModel", "User"]
 
     def do_create(self, line):
         """ Creates a new instance of BaseModel """
@@ -27,6 +28,8 @@ class HBNBCommand(cmd.Cmd):
             return
         if line == 'BaseModel':
             new_instance = BaseModel()
+        if line == 'User':
+            new_instance = User()
         new_instance.save()
         print(new_instance.id)
 
