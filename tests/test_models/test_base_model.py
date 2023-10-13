@@ -5,6 +5,7 @@
 """
 
 
+import os
 import unittest
 import datetime
 
@@ -75,3 +76,41 @@ class TestBaseModel(unittest.TestCase):
         
         print_str = "[{}] ({}) {}".format(instClass.__class__.__name__, instClass.id, instClass.__dict__)
         self.assertEqual(instClass.__str__(), print_str)
+        
+    # Testing the method base model save 
+    def test_base_model_save(self):
+        """This is a test model that tests the save method"""
+        instClass = BaseModel()
+        
+        # Testing if the created_at and the updated_at attribute are the same
+        self.assertEqual(instClass.created_at, instClass.updated_at)
+        instClass.save()
+        # Saving instClass to a file
+        
+        self.assertTrue(instClass.created_at != instClass.updated_at)
+        
+        filename = "test_file.json"
+        # test if that file exist
+        self.assertTrue(os.path.exists(filename))
+        # test if that file "test_file.json" is a file
+        self.assertTrue(os.path.isfile(filename))
+        
+        os.remove(filename)
+        
+    def test_base_model_save_args(self):
+        """This is test model that tests the save method with args """
+        instClass = BaseModel()
+        
+        with self.assertTrue(TypeError):
+            instClass.save(3, 5)
+            
+    # testing the to_dict method of the base model
+    def test_base_to_dict1(self):
+        """ This is a test model that test the method to_dict"""
+        
+        instClass = BaseModel()
+        instClass_to_dict = instClass.to_dict()
+        dict_field = ["__class__", "updated_at", "created_at", "id"]
+        
+        self.assertTrue(type(instClass_to_dict) is dict)
+        for dict_field 
