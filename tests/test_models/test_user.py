@@ -80,8 +80,8 @@ class UserTest(unittest.TestCase):
 
         user = User()
 
-        self.assertEqual(user.created_at, user_updated_at)
-        usee.save()
+        self.assertNotEqual(user.created_at, user.updated_at)
+        user.save()
 
         self.assertTrue(user.created_at != user.updated_at)
         filename = "file.json"

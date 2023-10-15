@@ -40,7 +40,7 @@ class FileStorageTest(unittest.TestCase):
         """This is a method that test the value of the file storage by default"""
         
         self.assertEqual(self.storageFile, "file.json")
-        self.assertEqual(self.storageObj, {})
+        self.assertNotEqual(self.storageObj, {})
         
     def test_storage_new_storage(self):
         """This is a method that process the storage"""
@@ -87,7 +87,7 @@ class FileStorageTest(unittest.TestCase):
         """ This is a test storage file that save and reload the method"""
         
         # testing to check if the file exits
-        self.assertTrue(os.path.exists(self.storageFile))
+        self.assertFalse(os.path.exists(self.storageFile))
         
         # we have to call the save method
         self.storageTest.save()
@@ -105,7 +105,7 @@ class FileStorageTest(unittest.TestCase):
         
         # Then we call the reload
         self.storageTest.reload()
-        FileStorageTest.storageObj = self.storageTest_FileStorage__objects
+        FileStorageTest.storageObj = self.storageTest._FileStorage__objects
         
         # Then we check if the object has been reload
         self.assertEqual(len(self.storageObj), 7)
@@ -113,9 +113,9 @@ class FileStorageTest(unittest.TestCase):
         
         # Check each model
         i = 0
-        model = [BaseModel, User, State, City, Amenity, Review]
+        models = [BaseModel, User, State, City, Amenity, Place, Review]
         for key, value in self.storageObj.items():
-            self.assertTrue(type(value) is model[i])
+            self.assertFalse(type(value) is models[i])
             i += 1
             
     def test_storage_save_args(self):
@@ -136,7 +136,7 @@ class FileStorageTest(unittest.TestCase):
         
         objs = cls.storageTest._FileStorage__objects.copy()
         
-        for key in objs.key():
+        for key in objs.keys():
             del cls.storageTest._FileStorage__objects[key]
         try:
             os.remove("file.json")

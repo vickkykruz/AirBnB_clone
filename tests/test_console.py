@@ -1,4 +1,6 @@
 import unittest
+import sys
+from console import HBNBCommand
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -7,6 +9,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 from unittest.mock import patch
+from models import storage
 from io import StringIO
 """ This is a test model that testes the console class """
 
@@ -14,12 +17,12 @@ class ConsoleTest(unittest.TestCase):
     """ This is a class console the tests the method side """
 
     models = {                          
-            "BaseModel": BaseModel
-            "User": User
-            "State": State
-            "City": City
-            "Place": Place
-            "Amenity": Amenity
+            "BaseModel": BaseModel,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Place": Place,
+            "Amenity": Amenity,
             "Review": Review
             }
 
