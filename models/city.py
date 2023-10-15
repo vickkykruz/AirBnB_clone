@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    City Module
+City Module
 
 This module contains the City class, which inherits from the BaseModel class.
 It defines a City object with 'name' and 'state_id' attributes to store the
