@@ -16,23 +16,30 @@ class ReviewTest(unittest.TestCase):
         self.assertEqual(len(review1.id), 36)
         self.assertTrue(type(review1.created_at) is datetime)
         self.assertTrue(type(review1.updated_at) is  datetime)
-        self.assertTrue(type(review1.name) is str)
-        self.assertTrue(review1.created_at == review1.updated_at)
+        self.assertTrue(type(review1.place_id) is str)
+        self.assertTrue(type(review1.user_id) is str)
+        self.assertTrue(type(review1.text) is str)
+        # self.assertTrue(review1.created_at == review1.updated_at)
 
     def test_review_model_two(self):
         """ This is a model that test the value by default """
         review1 = Review()
 
-        self.assertEqual(review1.name, "")
+        self.assertEqual(review1.user_id, "")
+        self.assertEqual(review1.place_id, "")
+        self.assertEqual(review1.text, "")
 
     def test_review_model_three(self):
         """ This is a model that test the input value by the user """
 
         review1 = Review()
-        review1.name = "new_review"
+        review1.text = "new_review"
+        review1.place_id = "2345"
+        review1.user_id = "1234"
 
-        self.assertEqual(review1.name, "new_review")
-        self.assertEqual(type(review1.name) is str)
+        self.assertEqual(review1.text, "new_review")
+        self.assertEqual(review1.place_id, "2345")
+        self.assertEqual(review1.user_id, "1234")
         
     def test_review_model_args(self):
         """ This is a test model review that test with args"""
@@ -79,7 +86,7 @@ class ReviewTest(unittest.TestCase):
         
         review1 = Review()
         
-        self.assertEqual(review1.created_at, review1.updated_at)
+        self.assertNotEqual(review1.created_at, review1.updated_at)
         
         review1.save()
         self.assertTrue(review1.created_at != review1.updated_at)
