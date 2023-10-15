@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-""" This module create a unique FileStorage
+""" 
+    This module create a unique FileStorage
     instance for your application
 """
 
