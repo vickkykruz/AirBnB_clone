@@ -89,7 +89,7 @@ class TestBaseModel(unittest.TestCase):
         
         self.assertTrue(instClass.created_at != instClass.updated_at)
         
-        filename = "test_file.json"
+        filename = "file.json"
         # test if that file exist
         self.assertTrue(os.path.exists(filename))
         # test if that file "test_file.json" is a file
