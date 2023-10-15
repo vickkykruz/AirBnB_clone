@@ -1,7 +1,22 @@
 #!/usr/bin/python3
 
 """
-    This module contains one class (State)
+State Module
+
+This module contains the State class, which inherits from the
+BaseModel class. It defines a State object with a 'name' attribute
+to represent the name of a state.
+
+Classes:
+    - State: Inherits from BaseModel and represents a state.
+
+Attributes:
+    - name (str): The name of the state.
+
+Usage:
+    To use this module, create instances of the State class to represent
+    different states and set their 'name' attribute accordingly.
+
 """
 
 

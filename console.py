@@ -1,7 +1,31 @@
 #!/usr/bin/python3
 
 """
-    This module contain the implementation of the console
+    Console Module
+
+This module contains the implementation of a command-line console
+for interacting with objects of various classes.
+
+Classes:
+    - HBNBCommand: The command-line interpreter class.
+    - prompt (str): The command prompt for the console.
+    - class_list (list): List of supported class names.
+
+Commands:
+    - create: Create a new instance of a specified class.
+    - show: Print the string representation of an
+            instance based on class name and ID.
+    - destroy: Delete an instance based on class name and ID.
+    - all: Print string representations of instances based on class name.
+    - update: Update an instance's attribute based on class name and ID.
+    - User: Placeholder for future command (not implemented).
+    - EOF: End-of-File marker to exit the console.
+    - exit: Quit the command-line interface.
+
+Usage:
+    To use this module, run it as the main script, and you'll
+    enter the console for interacting with objects.
+
 """
 import cmd
 

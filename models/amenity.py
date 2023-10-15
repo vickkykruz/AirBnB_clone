@@ -1,6 +1,21 @@
 #!/usr/bin/python3
 """
-    This module contains one class (Amenity)
+    Amenity Module
+
+This module contains the Amenity class, which inherits
+from the BaseModel class. It defines an Amenity object with a 'name'
+attribute to store the name of the amenity.
+
+Classes:
+    - Amenity: Inherits from BaseModel and represents an amenity.
+
+Attributes:
+    - name (str): The name of the amenity.
+
+Usage:
+    To use this module, create instances of the Amenity class to represent
+    different amenities and set their 'name' attribute accordingly.
+
 """
 
 
