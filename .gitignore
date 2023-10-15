@@ -1,2 +1,3 @@
-test_*
+test_base*
+test_save*
 file.json

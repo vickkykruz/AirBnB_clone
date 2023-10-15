@@ -171,7 +171,10 @@ class HBNBCommand(cmd.Cmd):
             #     print("** no instance found **\n", e)
             setattr(instance_to_update, att_name, value)
             FileStorage.save(self)
-
+    
+    def do_User(self, line):
+        """  """
+    
     def do_EOF(self, line):
         """ End-of-File Marker """
         return True
