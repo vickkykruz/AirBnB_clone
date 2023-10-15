@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-    Console Module
+Console Module
 
 This module contains the implementation of a command-line console
 for interacting with objects of various classes.
