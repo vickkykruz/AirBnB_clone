@@ -23,7 +23,7 @@ class FileStorageTest(unittest.TestCase):
         objs = cls.storageTest._FileStorage__objects.copy()
         
         for key in objs.keys():
-            del cls.storageFile._FileStorage__objects[key]
+            del cls.storageTest._FileStorage__objects[key]
             
         try:
             os.remove("file.json")
