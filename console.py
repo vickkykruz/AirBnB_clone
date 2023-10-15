@@ -20,7 +20,8 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    class_list = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
+    class_list = ["BaseModel", "User", "State", "City",
+                  "Amenity", "Place", "Review"]
 
     def do_create(self, line):
         """ Creates a new instance of BaseModel """
@@ -164,17 +165,12 @@ class HBNBCommand(cmd.Cmd):
             instance_to_update = stored_objects[key]
 
         if len(args) >= 3:
-            # try:
-            #     setattr(key, att_name, value)
-            #     FileStorage.save(self)
-            # except Exception as e:
-            #     print("** no instance found **\n", e)
             setattr(instance_to_update, att_name, value)
             FileStorage.save(self)
-    
+
     def do_User(self, line):
         """  """
-    
+
     def do_EOF(self, line):
         """ End-of-File Marker """
         return True
