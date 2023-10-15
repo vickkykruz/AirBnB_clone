@@ -14,10 +14,11 @@ from io import StringIO
 
 """ This is a test model that testes the console class """
 
+
 class ConsoleTest(unittest.TestCase):
     """ This is a class console the tests the method side """
 
-    models = {                          
+    models = {
             "BaseModel": BaseModel,
             "User": User,
             "State": State,
@@ -94,7 +95,7 @@ class ConsoleTest(unittest.TestCase):
             objs = storage.all()
             obj_key = "BaseModel.{}".format(val)
 
-            #tesing id tje id are the same
+            # tesing id tje id are the same
             self.assertEqual(val, objs[obj_key].id)
 
             # testing of the key is in the storage
@@ -112,7 +113,7 @@ class ConsoleTest(unittest.TestCase):
                 obj_key = "User.{}".format(val)
                 self.assertFalse(obj_key in objs)
                 # self.assertEqual(val, objs[obj_key].id)
-    
+
     def test_create_model_wrong(self):
         """ This is a test model that creywd with an unknown type """
 
@@ -167,7 +168,7 @@ class ConsoleTest(unittest.TestCase):
             val = fd.getvalue()[:-1]
             self.assertEqual(val, "** class name missing **")
 
-    #testing all the models
+    # testing all the models
     def test_all_models(self):
         """ This is a method that tje test all the model """
 
@@ -179,15 +180,15 @@ class ConsoleTest(unittest.TestCase):
             objs = storage.all()
             exp_val = []
             for key, value in objs.items():
-                 if value.__class__.__name__ == "BaseModel":
+                if value.__class__.__name__ == "BaseModel":
                     exp_val.append(objs[key].__str__())
-                    
+
             self.assertEqual(val, exp_val.__str__())
-            
+
         with patch("sys.stdout", new=StringIO()) as fd:
             HBNBCommand().onecmd("all User ")
             val = fd.getvalue()[:-1]
-             
+
             objs = storage.all()
             exp_val = []
             for key, value in objs.items():

@@ -11,6 +11,7 @@ from datetime import datetime
 from models import storage
 from models.base_model import BaseModel
 
+
 class TestBaseModel(unittest.TestCase):
     """ This is a class TestBaseModel that contains the attributes and methid
         for the functionality of the class

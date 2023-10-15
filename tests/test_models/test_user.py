@@ -27,7 +27,7 @@ class UserTest(unittest.TestCase):
 
         users = User()
 
-        #Testing the value by default
+        # Testing the value by default
         self.assertEqual(users.first_name, "")
         self.assertEqual(users.last_name, "")
         self.assertEqual(users.email, "")
@@ -64,16 +64,15 @@ class UserTest(unittest.TestCase):
         self.assertEqual(user.created_at, user_two.created_at)
         self.assertEqual(user.updated_at, user_two.updated_at)
 
-
     def test_user_str(self):
         """ This is a test method that test the __str__ method """
 
         user = User()
 
-        display_str = "[{}] ({}) {}".format(user.__class__.__name__, user.id, user.__dict__)
+        display_str = "[{}] ({}) {}".format(user.__class__.__name__, user.id,
+                                            user.__dict__)
 
         self.assertEqual(user.__str__(), display_str)
-
 
     def test_user_save(self):
         """ This is a model that test the save functionality """
