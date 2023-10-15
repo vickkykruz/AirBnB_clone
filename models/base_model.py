@@ -1,10 +1,29 @@
 #!/usr/bin/python3
 
 """
-    This module defines all common attributes/methods for other classes
+Classes:
+    - BaseModel: The base class for other classes.
+
+Attributes:
+    - id (str): A unique identifier for each instance.
+    - created_at (datetime): The date and time when the instance is created.
+    - updated_at (datetime): The date and time when
+                             the instance is last updated.
+
+Methods:
+    - __init__(self, *args, **kwargs): Initializes a new instance.
+    - __str__(self): Defines a custom string representation for the instance.
+    - save(self): Updates the 'updated_at' attribute with the current datetime.
+    - to_dict(self): Converts the instance to a dictionary
+                      with formatted datetime values.
+
+Usage:
+    To use this module, create classes that inherit from BaseModel
+    and make use of the common attributes and methods.
 """
 from uuid import uuid4
 from datetime import datetime
+
 import models
 
 
@@ -34,7 +53,8 @@ class BaseModel():
 
     def __str__(self):
         """ This method defines a custom string method """
-        return f"[BaseModel] ({self.id}) {self.__dict__}"
+        clsName = self.__class__.__name__
+        return f"[{clsName}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """ This method updates the "updates_at" with the current datetime """

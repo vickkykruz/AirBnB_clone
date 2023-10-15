@@ -1,11 +1,42 @@
 #!/usr/bin/python3
 
 """
-    This module contain the implementation of the console
+    Console Module
+
+This module contains the implementation of a command-line console
+for interacting with objects of various classes.
+
+Classes:
+    - HBNBCommand: The command-line interpreter class.
+    - prompt (str): The command prompt for the console.
+    - class_list (list): List of supported class names.
+
+Commands:
+    - create: Create a new instance of a specified class.
+    - show: Print the string representation of an
+            instance based on class name and ID.
+    - destroy: Delete an instance based on class name and ID.
+    - all: Print string representations of instances based on class name.
+    - update: Update an instance's attribute based on class name and ID.
+    - User: Placeholder for future command (not implemented).
+    - EOF: End-of-File marker to exit the console.
+    - exit: Quit the command-line interface.
+
+Usage:
+    To use this module, run it as the main script, and you'll
+    enter the console for interacting with objects.
+
 """
 import cmd
+
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models.state import State
+from models.user import User
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -13,7 +44,8 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    class_list = ["BaseModel"]
+    class_list = ["BaseModel", "User", "State", "City",
+                  "Amenity", "Place", "Review"]
 
     def do_create(self, line):
         """ Creates a new instance of BaseModel """
@@ -27,6 +59,18 @@ class HBNBCommand(cmd.Cmd):
             return
         if line == 'BaseModel':
             new_instance = BaseModel()
+        if line == 'User':
+            new_instance = User()
+        if line == 'State':
+            new_instance = State()
+        if line == 'City':
+            new_instance = City()
+        if line == 'Amenity':
+            new_instance = Amenity()
+        if line == 'Place':
+            new_instance = Place()
+        if line == 'Review':
+            new_instance = Review()
         new_instance.save()
         print(new_instance.id)
 
@@ -145,13 +189,11 @@ class HBNBCommand(cmd.Cmd):
             instance_to_update = stored_objects[key]
 
         if len(args) >= 3:
-            # try:
-            #     setattr(key, att_name, value)
-            #     FileStorage.save(self)
-            # except Exception as e:
-            #     print("** no instance found **\n", e)
             setattr(instance_to_update, att_name, value)
             FileStorage.save(self)
+
+    def do_User(self, line):
+        """  """
 
     def do_EOF(self, line):
         """ End-of-File Marker """

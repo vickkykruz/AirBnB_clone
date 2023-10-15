@@ -1,11 +1,36 @@
 #!/usr/bin/python3
 
 """
-    This module contains the FileStorage Class
+FileStorage Module
+
+This module contains the FileStorage class for serializing
+instances to a JSON file and deserializing JSON files.
+
+Attributes:
+    - __file_path (str): Path to the JSON file for data storage.
+    - __objects (dict): Dictionary to store objects by <class name>.id.
+
+Classes:
+    - FileStorage: Manages object serialization and deserialization.
+    - all(self): Returns all stored objects.
+    - new(self, obj): Adds a new object to storage.
+    - save(self): Serializes objects to a JSON file.
+    - reload(self): Deserializes JSON file back into objects.
+
+Usage:
+    To use this module, create a FileStorage instance
+    and call its methods for object manipulation and persistence.
 """
+
 import json
 import os
 from models.base_model import BaseModel
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 
 
 class FileStorage:
