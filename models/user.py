@@ -27,7 +27,24 @@ from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """ This class inherits from BaseModel """
+    """
+    User Class
+
+    This class represents a user and inherits from the BaseModel class.
+    It stores user information, including the user's 'email', 'password',
+    'first_name', and 'last_name'.
+
+    Attributes:
+    - email (str): The email address of the user.
+    - password (str): The password associated with the user's account.
+    - first_name (str): The first name of the user.
+    - last_name (str): The last name of the user.
+
+    Usage:
+    Create instances of the User class to represent individual users and set
+    their attributes to store user-specific information.
+
+    """
     email = ""
     password = ""
     first_name = ""
