@@ -24,6 +24,6 @@
 <p>This project was done and implemented by the following Software Enginners</p>
 
 1. Edward Victor Chukwuemeka
-2. Adeola Johnson
+2. Johnson Adeola
 
 <p align="center">ALX Africa</p>
