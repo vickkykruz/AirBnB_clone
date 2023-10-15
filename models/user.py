@@ -23,6 +23,7 @@ Usage:
     'last_name' attributes accordingly.
 
 """
+
 from models.base_model import BaseModel
 
 
