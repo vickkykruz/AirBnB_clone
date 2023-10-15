@@ -27,6 +27,7 @@ Usage:
     enter the console for interacting with objects.
 
 """
+
 import cmd
 
 from models.base_model import BaseModel
