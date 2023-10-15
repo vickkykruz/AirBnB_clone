@@ -11,6 +11,7 @@ from models.review import Review
 from unittest.mock import patch
 from models import storage
 from io import StringIO
+
 """ This is a test model that testes the console class """
 
 class ConsoleTest(unittest.TestCase):
@@ -189,4 +190,17 @@ class ConsoleTest(unittest.TestCase):
             objs = storage.all()
             exp_val = []
             for key, value in objs.items():
-                if 
+                 if value.__class__.__name__ == "BaseModel":
+                    exp_val.append(objs[key].__str__())
+                    
+            self.assertEqual(val, exp_val.__str__())
+            
+        with patch("sys.stdout", new=StringIO()) as fd:
+            HBNBCommand().onecmd("all User ")
+            val = fd.getvalue()[:-1]
+             
+            objs = storage.all()
+            exp_val = []
+            for key, value in objs.items():
+                if value.__class__.__name__ == "User":
+                    exp_val.append(objs[key].__str__())
