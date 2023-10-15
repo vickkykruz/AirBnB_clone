@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 """
+
 FileStorage Module
 
 This module contains the FileStorage class for serializing
@@ -20,6 +21,7 @@ Classes:
 Usage:
     To use this module, create a FileStorage instance
     and call its methods for object manipulation and persistence.
+
 """
 
 import json
